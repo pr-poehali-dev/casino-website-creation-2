@@ -61,6 +61,19 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				neon: {
+					cyan: '#00FFFF',
+					pink: '#FF0080', 
+					gold: '#FFD700',
+					purple: '#8A2BE2',
+					green: '#00FF00',
+				},
+				vegas: {
+					dark: '#000000',
+					midnight: '#0A0A0A',
+					gold: '#FFD700',
+					red: '#FF0000',
 				}
 			},
 			borderRadius: {
@@ -84,11 +97,30 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'neon-pulse': {
+					'0%, 100%': { textShadow: '0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor' },
+					'50%': { textShadow: '0 0 2px currentColor, 0 0 5px currentColor, 0 0 8px currentColor' },
+				},
+				'jackpot-flash': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.3' },
+				},
+				'slot-spin': {
+					'0%': { transform: 'rotateY(0deg)' },
+					'100%': { transform: 'rotateY(360deg)' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'neon-pulse': 'neon-pulse 2s ease-in-out infinite',
+				'jackpot-flash': 'jackpot-flash 1s ease-in-out infinite',
+				'slot-spin': 'slot-spin 0.5s ease-in-out',
+			},
+			fontFamily: {
+				'casino': ['Oswald', 'sans-serif'],
+				'vegas': ['Rubik', 'sans-serif'],
 			}
 		}
 	},
