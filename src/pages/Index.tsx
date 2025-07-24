@@ -137,6 +137,80 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Game Providers */}
+      <section className="py-16 bg-gradient-to-r from-neon-purple/5 to-neon-cyan/5">
+        <div className="container mx-auto px-4">
+          <h3 className="text-4xl font-casino font-bold text-center mb-12 text-neon-gold">
+            🎮 ПРОВАЙДЕРЫ ИГР 🎮
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-8">
+            {[
+              { name: "PG Soft", games: "150+" },
+              { name: "Pragmatic Play", games: "200+" },
+              { name: "NetEnt", games: "180+" },
+              { name: "Microgaming", games: "300+" },
+              { name: "Play'n GO", games: "120+" },
+              { name: "Evolution", games: "80+" },
+              { name: "Red Tiger", games: "90+" },
+              { name: "Quickspin", games: "70+" },
+              { name: "Yggdrasil", games: "85+" },
+              { name: "Push Gaming", games: "60+" },
+              { name: "Hacksaw Gaming", games: "45+" },
+              { name: "Nolimit City", games: "55+" }
+            ].map((provider, index) => (
+              <Card key={index} className="bg-black/70 border-neon-gold/30 hover:border-neon-gold transition-all hover:scale-105 cursor-pointer">
+                <CardContent className="p-4 text-center">
+                  <div className="h-16 bg-gradient-to-r from-neon-purple/20 to-neon-pink/20 rounded-md mb-3 flex items-center justify-center">
+                    <span className="text-neon-gold font-bold text-lg">
+                      {provider.name.charAt(0)}
+                    </span>
+                  </div>
+                  <h4 className="text-neon-cyan font-bold text-sm mb-1">{provider.name}</h4>
+                  <p className="text-gray-400 text-xs">{provider.games} игр</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          
+          {/* Featured PG Soft Games */}
+          <div className="bg-gradient-to-r from-neon-purple/10 to-neon-pink/10 rounded-xl p-8">
+            <h4 className="text-3xl font-casino font-bold text-center mb-8 text-neon-pink">
+              🔥 ХИТЫ ОТ PG SOFT 🔥
+            </h4>
+            <div className="grid md:grid-cols-4 gap-6">
+              {[
+                { name: "Fortune Ox", multiplier: "x5000", feature: "Bonus Buy" },
+                { name: "Mahjong Ways", multiplier: "x2000", feature: "Free Spins" },
+                { name: "Wild Bounty", multiplier: "x10000", feature: "Cascading" },
+                { name: "Candy Burst", multiplier: "x3000", feature: "Cluster Pays" }
+              ].map((game, index) => (
+                <Card key={index} className="bg-black/80 border-neon-pink/40 hover:border-neon-pink transition-all">
+                  <CardHeader className="text-center pb-2">
+                    <div className="h-32 bg-gradient-to-br from-neon-gold/20 to-neon-pink/20 rounded-md mb-2 flex items-center justify-center">
+                      <Icon name="Gamepad2" className="text-neon-gold" size={40} />
+                    </div>
+                    <CardTitle className="text-neon-gold text-lg">{game.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <div className="flex justify-between items-center mb-3">
+                      <Badge className="bg-neon-pink/20 text-neon-pink border-neon-pink">
+                        {game.multiplier}
+                      </Badge>
+                      <Badge variant="outline" className="border-neon-cyan text-neon-cyan text-xs">
+                        {game.feature}
+                      </Badge>
+                    </div>
+                    <Button className="w-full bg-gradient-to-r from-neon-pink to-neon-purple hover:scale-105 transition-transform text-white font-bold">
+                      ИГРАТЬ
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Tournaments */}
       <section className="py-16">
         <div className="container mx-auto px-4">
