@@ -4,28 +4,35 @@ import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
-  const slotGames = [
+  const crashGames = [
     {
-      title: "Mega Jackpot",
-      jackpot: "2,450,000₽",
-      image: "/img/adcc3f5b-ffe8-4b25-85b8-162b6c5ab7ea.jpg",
-      rtp: "96.5%",
-      bonus: "Free Spins"
+      title: "JetX",
+      multiplier: "x12.5",
+      image: "/img/8a142dc9-a8ff-4e7a-88aa-a0061f0d14da.jpg",
+      status: "В полете",
+      players: "1,247"
     },
     {
-      title: "Vegas Fortune",
-      jackpot: "1,850,000₽",
-      image: "/img/adcc3f5b-ffe8-4b25-85b8-162b6c5ab7ea.jpg",
-      rtp: "95.8%",
-      bonus: "Multiplier"
+      title: "Lucky Jet",
+      multiplier: "x8.3",
+      image: "/img/8a142dc9-a8ff-4e7a-88aa-a0061f0d14da.jpg",
+      status: "Взлетел",
+      players: "892"
     },
     {
-      title: "Neon Diamonds",
-      jackpot: "980,000₽",
-      image: "/img/adcc3f5b-ffe8-4b25-85b8-162b6c5ab7ea.jpg",
-      rtp: "97.2%",
-      bonus: "Bonus Round"
+      title: "Space XY",
+      multiplier: "x15.7",
+      image: "/img/8a142dc9-a8ff-4e7a-88aa-a0061f0d14da.jpg",
+      status: "Готовится",
+      players: "2,156"
     }
+  ];
+
+  const liveGames = [
+    { name: "Crazy Time", players: "15,420", status: "live" },
+    { name: "Monopoly Live", players: "8,930", status: "live" },
+    { name: "Dream Catcher", players: "12,150", status: "live" },
+    { name: "Lightning Roulette", players: "9,670", status: "live" }
   ];
 
   const tournaments = [
@@ -101,44 +108,75 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Popular Games */}
-      <section className="py-16 bg-black/30">
+      {/* Crash Games */}
+      <section className="py-16 bg-gradient-to-br from-black via-blue-900/20 to-black">
         <div className="container mx-auto px-4">
-          <h3 className="text-4xl font-casino font-bold text-center mb-12 text-neon-gold">
-            🎰 ПОПУЛЯРНЫЕ СЛОТЫ 🎰
+          <h3 className="text-4xl font-casino font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-blue-400">
+            🚀 КРЭШ ИГРЫ 🚀
           </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {slotGames.map((game, index) => (
-              <Card key={index} className="bg-gradient-to-br from-gray-900 to-black border-neon-gold/30 hover:border-neon-gold transition-all hover:scale-105">
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {crashGames.map((game, index) => (
+              <Card key={index} className="bg-gradient-to-br from-blue-900/30 to-black border-neon-cyan/40 hover:border-neon-cyan transition-all hover:scale-105 relative overflow-hidden">
+                <div className="absolute top-2 right-2">
+                  <Badge className={`${game.status === 'В полете' ? 'bg-green-500' : game.status === 'Взлетел' ? 'bg-red-500' : 'bg-yellow-500'} text-white font-bold animate-pulse`}>
+                    {game.status}
+                  </Badge>
+                </div>
                 <CardHeader className="text-center">
                   <img 
                     src={game.image} 
                     alt={game.title}
-                    className="w-full h-48 object-cover rounded-md mb-4"
+                    className="w-full h-32 object-cover rounded-md mb-4 opacity-80"
                   />
-                  <CardTitle className="text-neon-gold font-casino text-2xl">
+                  <CardTitle className="text-neon-cyan font-casino text-2xl">
                     {game.title}
                   </CardTitle>
-                  <CardDescription className="text-neon-cyan font-bold text-xl animate-jackpot-flash">
-                    ДЖЕКПОТ: {game.jackpot}
+                  <CardDescription className="text-neon-gold font-bold text-3xl animate-neon-pulse">
+                    {game.multiplier}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex justify-between">
-                    <Badge variant="outline" className="border-neon-green text-neon-green">
-                      RTP: {game.rtp}
-                    </Badge>
-                    <Badge variant="outline" className="border-neon-pink text-neon-pink">
-                      {game.bonus}
-                    </Badge>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300 text-sm">Игроков: {game.players}</span>
+                    <div className="flex items-center space-x-1">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                      <span className="text-green-400 text-sm">LIVE</span>
+                    </div>
                   </div>
-                  <Button className="w-full bg-neon-pink hover:bg-neon-pink/80 text-white font-bold animate-slot-spin hover:animate-none">
-                    <Icon name="Play" className="mr-2" />
-                    ИГРАТЬ
+                  <Button className="w-full bg-gradient-to-r from-neon-cyan to-blue-500 hover:scale-105 transition-transform text-white font-bold text-lg">
+                    <Icon name="Rocket" className="mr-2" />
+                    ВЗЛЕТЕЛИ!
                   </Button>
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Live Casino Games */}
+          <div className="bg-gradient-to-r from-neon-purple/10 to-neon-pink/10 rounded-2xl p-8">
+            <h4 className="text-3xl font-casino font-bold text-center mb-8 text-neon-pink">
+              🎲 ЖИВЫЕ ИГРЫ 🎲
+            </h4>
+            <div className="grid md:grid-cols-4 gap-6">
+              {liveGames.map((game, index) => (
+                <Card key={index} className="bg-black/70 border-neon-pink/40 hover:border-neon-pink transition-all group">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-16 h-16 mx-auto bg-gradient-to-r from-neon-pink to-red-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Icon name="Video" className="text-white" size={28} />
+                    </div>
+                    <h5 className="text-neon-gold font-bold text-lg mb-2">{game.name}</h5>
+                    <div className="flex items-center justify-center space-x-2 mb-4">
+                      <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                      <span className="text-red-400 text-sm font-bold">ПРЯМОЙ ЭФИР</span>
+                    </div>
+                    <p className="text-gray-300 text-sm mb-3">Игроков: {game.players}</p>
+                    <Button className="w-full bg-gradient-to-r from-red-500 to-pink-500 hover:scale-105 transition-transform text-white font-bold">
+                      ИГРАТЬ
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
