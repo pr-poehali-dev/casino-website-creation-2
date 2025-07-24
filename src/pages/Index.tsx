@@ -4,6 +4,30 @@ import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
+  const premiumSlots = [
+    {
+      title: "Royal Crown",
+      jackpot: "5,250,000₽",
+      image: "/img/637a5a12-cf4a-4d94-9b73-da50ccd2f8d2.jpg",
+      rtp: "98.5%",
+      category: "Премиум"
+    },
+    {
+      title: "Diamond Palace",
+      jackpot: "3,890,000₽",
+      image: "/img/637a5a12-cf4a-4d94-9b73-da50ccd2f8d2.jpg",
+      rtp: "97.8%",
+      category: "Люкс"
+    },
+    {
+      title: "Golden Empire",
+      jackpot: "2,670,000₽",
+      image: "/img/637a5a12-cf4a-4d94-9b73-da50ccd2f8d2.jpg",
+      rtp: "96.9%",
+      category: "Элит"
+    }
+  ];
+
   const crashGames = [
     {
       title: "JetX",
@@ -51,15 +75,15 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-vegas-dark via-vegas-midnight to-black text-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white">
       {/* Header */}
-      <header className="border-b border-neon-gold/20 bg-black/50 backdrop-blur-sm">
+      <header className="border-b border-amber-500/30 bg-black/70 backdrop-blur-sm shadow-lg">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Icon name="Crown" className="text-neon-gold" size={32} />
-              <h1 className="text-3xl font-casino font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-gold via-neon-pink to-neon-cyan animate-neon-pulse">
-                NEON SLOTS
+              <Icon name="Crown" className="text-amber-400" size={32} />
+              <h1 className="text-3xl font-casino font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600">
+                ROYAL CASINO
               </h1>
             </div>
             <nav className="hidden md:flex space-x-6">
@@ -104,6 +128,63 @@ const Index = () => {
               <Icon name="Gift" className="mr-2" />
               Получить бонус
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Premium Slots */}
+      <section className="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900">
+        <div className="container mx-auto px-4">
+          <h3 className="text-5xl font-casino font-bold text-center mb-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600">
+            👑 ПРЕМИУМ СЛОТЫ 👑
+          </h3>
+          <p className="text-center text-gray-300 text-xl mb-12">Эксклюзивные автоматы с максимальными выигрышами</p>
+          
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {premiumSlots.map((slot, index) => (
+              <Card key={index} className="bg-gradient-to-br from-amber-900/20 via-black to-amber-900/20 border-2 border-amber-500/30 hover:border-amber-400 transition-all hover:scale-105 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute top-4 right-4">
+                  <Badge className="bg-gradient-to-r from-amber-500 to-yellow-600 text-black font-bold border-0">
+                    {slot.category}
+                  </Badge>
+                </div>
+                <CardHeader className="text-center relative z-10">
+                  <div className="relative">
+                    <img 
+                      src={slot.image} 
+                      alt={slot.title}
+                      className="w-full h-48 object-cover rounded-xl mb-4 border border-amber-500/20"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
+                  </div>
+                  <CardTitle className="text-amber-400 font-casino text-2xl mb-2">
+                    {slot.title}
+                  </CardTitle>
+                  <CardDescription className="text-yellow-500 font-bold text-2xl animate-pulse">
+                    ДЖЕКПОТ: {slot.jackpot}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4 relative z-10">
+                  <div className="flex justify-between items-center">
+                    <Badge variant="outline" className="border-green-400 text-green-400 bg-green-400/10">
+                      RTP: {slot.rtp}
+                    </Badge>
+                    <div className="flex items-center space-x-1">
+                      <Icon name="Star" className="text-amber-400" size={16} />
+                      <Icon name="Star" className="text-amber-400" size={16} />
+                      <Icon name="Star" className="text-amber-400" size={16} />
+                      <Icon name="Star" className="text-amber-400" size={16} />
+                      <Icon name="Star" className="text-amber-400" size={16} />
+                    </div>
+                  </div>
+                  <Button className="w-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-black font-bold text-lg py-3 transition-all hover:scale-105 shadow-lg hover:shadow-amber-500/25">
+                    <Icon name="Crown" className="mr-2" />
+                    ИГРАТЬ СЕЙЧАС
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
