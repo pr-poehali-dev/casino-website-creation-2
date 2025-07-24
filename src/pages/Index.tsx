@@ -50,9 +50,9 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Icon name="Zap" className="text-neon-gold" size={32} />
-              <h1 className="text-3xl font-casino font-bold text-neon-gold animate-neon-pulse">
-                VEGAS CASINO
+              <Icon name="Crown" className="text-neon-gold" size={32} />
+              <h1 className="text-3xl font-casino font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-gold via-neon-pink to-neon-cyan animate-neon-pulse">
+                NEON SLOTS
               </h1>
             </div>
             <nav className="hidden md:flex space-x-6">
@@ -62,9 +62,15 @@ const Index = () => {
                 </a>
               ))}
             </nav>
-            <Button className="bg-neon-pink hover:bg-neon-pink/80 text-white font-bold">
-              Регистрация
-            </Button>
+            <div className="flex space-x-3">
+              <Button variant="outline" className="border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-black">
+                Войти
+              </Button>
+              <Button className="bg-gradient-to-r from-neon-pink to-neon-purple hover:scale-105 transition-transform text-white font-bold px-6">
+                <Icon name="UserPlus" className="mr-2" size={16} />
+                Регистрация
+              </Button>
+            </div>
           </div>
         </div>
       </header>
@@ -252,53 +258,116 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Bonuses */}
-      <section className="py-16 bg-gradient-to-r from-neon-purple/10 to-neon-pink/10">
+      {/* Level System & Bonuses */}
+      <section className="py-20 bg-gradient-to-br from-black via-neon-purple/5 to-black">
         <div className="container mx-auto px-4">
-          <h3 className="text-4xl font-casino font-bold text-center mb-12 text-neon-pink">
-            🎁 БОНУСЫ И АКЦИИ 🎁
+          <h3 className="text-5xl font-casino font-bold text-center mb-4 text-transparent bg-clip-text bg-gradient-to-r from-neon-gold to-neon-pink">
+            ⚡ СИСТЕМА УРОВНЕЙ ⚡
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="bg-black/50 border-neon-gold text-center">
-              <CardHeader>
-                <Icon name="Gift" className="mx-auto text-neon-gold mb-2" size={48} />
-                <CardTitle className="text-neon-gold">Приветственный бонус</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold text-neon-cyan mb-2">200%</p>
-                <p className="text-sm text-gray-300">до 100,000₽</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-black/50 border-neon-pink text-center">
-              <CardHeader>
-                <Icon name="Zap" className="mx-auto text-neon-pink mb-2" size={48} />
-                <CardTitle className="text-neon-pink">Фриспины</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold text-neon-cyan mb-2">100</p>
-                <p className="text-sm text-gray-300">за депозит</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-black/50 border-neon-cyan text-center">
-              <CardHeader>
-                <Icon name="RefreshCw" className="mx-auto text-neon-cyan mb-2" size={48} />
-                <CardTitle className="text-neon-cyan">Кэшбек</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold text-neon-gold mb-2">25%</p>
-                <p className="text-sm text-gray-300">еженедельно</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-black/50 border-neon-green text-center">
-              <CardHeader>
-                <Icon name="Star" className="mx-auto text-neon-green mb-2" size={48} />
-                <CardTitle className="text-neon-green">VIP программа</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold text-neon-pink mb-2">5★</p>
-                <p className="text-sm text-gray-300">уровней</p>
-              </CardContent>
-            </Card>
+          <p className="text-center text-neon-cyan text-xl mb-12">Играй больше — получай больше бонусов!</p>
+          
+          {/* Level Progress */}
+          <div className="bg-gradient-to-r from-black/80 to-gray-900/80 rounded-2xl p-8 mb-12 border border-neon-gold/30">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center space-x-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-neon-gold to-vegas-gold rounded-full flex items-center justify-center">
+                  <Icon name="Crown" className="text-black" size={32} />
+                </div>
+                <div>
+                  <h4 className="text-2xl font-bold text-neon-gold">Золотой уровень</h4>
+                  <p className="text-neon-cyan">750 / 1000 очков опыта</p>
+                </div>
+              </div>
+              <Badge className="bg-neon-pink text-white text-lg px-4 py-2">
+                Уровень 4
+              </Badge>
+            </div>
+            <div className="w-full bg-gray-800 rounded-full h-4 mb-4">
+              <div className="bg-gradient-to-r from-neon-gold to-neon-pink h-4 rounded-full animate-pulse" style={{width: '75%'}}></div>
+            </div>
+            <p className="text-gray-300 text-center">250 очков до следующего уровня</p>
+          </div>
+
+          {/* Level Rewards */}
+          <div className="grid md:grid-cols-5 gap-6 mb-16">
+            {[
+              { level: 1, name: "Новичок", icon: "User", color: "text-gray-400", bg: "from-gray-600 to-gray-700", reward: "10 фриспинов" },
+              { level: 2, name: "Бронза", icon: "Shield", color: "text-orange-400", bg: "from-orange-600 to-orange-700", reward: "25 фриспинов" },
+              { level: 3, name: "Серебро", icon: "Award", color: "text-gray-300", bg: "from-gray-400 to-gray-500", reward: "50 фриспинов" },
+              { level: 4, name: "Золото", icon: "Crown", color: "text-neon-gold", bg: "from-neon-gold to-vegas-gold", reward: "100 фриспинов", active: true },
+              { level: 5, name: "Платина", icon: "Gem", color: "text-neon-cyan", bg: "from-neon-cyan to-blue-400", reward: "250 фриспинов" }
+            ].map((tier, index) => (
+              <Card key={index} className={`text-center transition-all hover:scale-105 ${tier.active ? 'border-neon-gold bg-gradient-to-br from-neon-gold/10 to-black' : 'bg-black/60 border-gray-700'}`}>
+                <CardHeader className="pb-3">
+                  <div className={`w-12 h-12 mx-auto rounded-full bg-gradient-to-r ${tier.bg} flex items-center justify-center mb-3`}>
+                    <Icon name={tier.icon as any} className={tier.active ? "text-black" : "text-white"} size={24} />
+                  </div>
+                  <CardTitle className={`${tier.color} text-lg`}>
+                    {tier.name}
+                  </CardTitle>
+                  <p className="text-sm text-gray-400">Уровень {tier.level}</p>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <p className="text-neon-cyan font-bold">{tier.reward}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Current Bonuses */}
+          <div className="bg-gradient-to-r from-neon-purple/20 to-neon-pink/20 rounded-2xl p-8">
+            <h4 className="text-3xl font-casino font-bold text-center mb-8 text-neon-pink">
+              🎁 ДОСТУПНЫЕ БОНУСЫ 🎁
+            </h4>
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card className="bg-black/70 border-neon-gold/50 hover:border-neon-gold transition-all">
+                <CardHeader className="text-center">
+                  <div className="w-20 h-20 mx-auto bg-gradient-to-r from-neon-gold to-vegas-gold rounded-full flex items-center justify-center mb-4">
+                    <Icon name="Gift" className="text-black" size={40} />
+                  </div>
+                  <CardTitle className="text-neon-gold text-2xl">Ежедневный бонус</CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-3xl font-bold text-neon-cyan mb-2">500₽</p>
+                  <p className="text-gray-300 mb-4">+ 20 фриспинов</p>
+                  <Button className="w-full bg-gradient-to-r from-neon-gold to-vegas-gold text-black font-bold hover:scale-105 transition-transform">
+                    Забрать
+                  </Button>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-black/70 border-neon-pink/50 hover:border-neon-pink transition-all">
+                <CardHeader className="text-center">
+                  <div className="w-20 h-20 mx-auto bg-gradient-to-r from-neon-pink to-neon-purple rounded-full flex items-center justify-center mb-4">
+                    <Icon name="Zap" className="text-white" size={40} />
+                  </div>
+                  <CardTitle className="text-neon-pink text-2xl">Депозит бонус</CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-3xl font-bold text-neon-cyan mb-2">150%</p>
+                  <p className="text-gray-300 mb-4">до 50,000₽</p>
+                  <Button className="w-full bg-gradient-to-r from-neon-pink to-neon-purple text-white font-bold hover:scale-105 transition-transform">
+                    Активировать
+                  </Button>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-black/70 border-neon-cyan/50 hover:border-neon-cyan transition-all">
+                <CardHeader className="text-center">
+                  <div className="w-20 h-20 mx-auto bg-gradient-to-r from-neon-cyan to-blue-400 rounded-full flex items-center justify-center mb-4">
+                    <Icon name="RotateCcw" className="text-black" size={40} />
+                  </div>
+                  <CardTitle className="text-neon-cyan text-2xl">Кэшбек</CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-3xl font-bold text-neon-gold mb-2">15%</p>
+                  <p className="text-gray-300 mb-4">еженедельно</p>
+                  <Button className="w-full bg-gradient-to-r from-neon-cyan to-blue-400 text-black font-bold hover:scale-105 transition-transform">
+                    Получить
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -333,11 +402,11 @@ const Index = () => {
       <footer className="bg-black border-t border-neon-gold/20 py-8">
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <Icon name="Zap" className="text-neon-gold" size={24} />
-            <span className="text-xl font-casino font-bold text-neon-gold">VEGAS CASINO</span>
+            <Icon name="Crown" className="text-neon-gold" size={24} />
+            <span className="text-xl font-casino font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-gold to-neon-pink">NEON SLOTS</span>
           </div>
           <p className="text-gray-400 text-sm">
-            © 2024 Vegas Casino. Играйте ответственно. 18+
+            © 2024 Neon Slots. Играйте ответственно. 18+
           </p>
         </div>
       </footer>
